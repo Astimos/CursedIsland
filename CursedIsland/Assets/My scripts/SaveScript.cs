@@ -9,5 +9,5 @@ public class SaveScript : MonoBehaviour
     public static float BatteryPower = 1.0f;
     public static bool FlashLightOn = false;
     public static bool NVLightOn = false;
-
+    public static int Apples = 0;
 }
