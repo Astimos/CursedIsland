@@ -7,6 +7,7 @@ public class Pickups : MonoBehaviour
     RaycastHit hit;
     [SerializeField] float Distance = 4.0f;
     [SerializeField] GameObject PickupMessage;
+    private AudioSource MyPlayer;
 
     private float RayDistance;
     private bool CanSeePickup = false;
@@ -16,6 +17,7 @@ public class Pickups : MonoBehaviour
     {
         PickupMessage.gameObject.SetActive(false);
         RayDistance = Distance;
+        MyPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,9 +30,25 @@ public class Pickups : MonoBehaviour
                 CanSeePickup = true;
                 if (Input.GetKeyDown(KeyCode.E)) 
                 {
-                    Destroy(hit.transform.gameObject);
-                    SaveScript.Apples += 1;
-                
+                    if (SaveScript.Apples < 6)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.Apples += 1;
+                        MyPlayer.Play();
+                    }
+                }
+            }
+            else if (hit.transform.tag == "Battery")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.Batteries < 4)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.Batteries += 1;
+                        MyPlayer.Play();
+                    }
                 }
             }
             else 
