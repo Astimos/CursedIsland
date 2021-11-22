@@ -33,6 +33,39 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject BatteryButton3;
     [SerializeField] GameObject BatteryImage4;
     [SerializeField] GameObject BatteryButton4;
+
+    // Weapons
+
+    [SerializeField] GameObject KnifeImage;
+    [SerializeField] GameObject KnifeButton;
+    [SerializeField] GameObject BatImage;
+    [SerializeField] GameObject BatButton;
+    [SerializeField] GameObject AxeImage;
+    [SerializeField] GameObject AxeButton;
+    [SerializeField] GameObject GunImage;
+    [SerializeField] GameObject GunButton;
+    [SerializeField] GameObject CrossbowImage;
+    [SerializeField] GameObject CrossbowButton;
+
+    //Keys
+
+    [SerializeField] GameObject CabinKey;
+    [SerializeField] GameObject HouseKey;
+    [SerializeField] GameObject RoomKey;
+
+    // Ammo
+
+    [SerializeField] GameObject BulletClip1Image;
+    [SerializeField] GameObject BulletClip1Button;
+    [SerializeField] GameObject BulletClip2Image;
+    [SerializeField] GameObject BulletClip2Button;
+    [SerializeField] GameObject BulletClip3Image;
+    [SerializeField] GameObject BulletClip3Button;
+    [SerializeField] GameObject BulletClip4Image;
+    [SerializeField] GameObject BulletClip4Button;
+    [SerializeField] GameObject ArrowImage;
+    [SerializeField] GameObject ArrowButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +98,39 @@ public class Inventory : MonoBehaviour
         BatteryButton3.gameObject.SetActive(false);
         BatteryImage4.gameObject.SetActive(false);
         BatteryButton4.gameObject.SetActive(false);
+
+        // Weapons 
+
+        KnifeImage.gameObject.SetActive(false);
+        KnifeButton.gameObject.SetActive(false);
+        AxeImage.gameObject.SetActive(false);
+        AxeButton.gameObject.SetActive(false);
+        BatImage.gameObject.SetActive(false);
+        BatButton.gameObject.SetActive(false);
+        GunImage.gameObject.SetActive(false);
+        GunButton.gameObject.SetActive(false);
+        CrossbowImage.gameObject.SetActive(false);
+        CrossbowButton.gameObject.SetActive(false);
+
+        // Keys
+
+        CabinKey.gameObject.SetActive(false);
+        RoomKey.gameObject.SetActive(false);
+        HouseKey.gameObject.SetActive(false);
+
+        // Ammo
+
+        BulletClip1Image.gameObject.SetActive(false);
+        BulletClip1Button.gameObject.SetActive(false);
+        BulletClip2Image.gameObject.SetActive(false);
+        BulletClip2Button.gameObject.SetActive(false);
+        BulletClip3Image.gameObject.SetActive(false);
+        BulletClip3Button.gameObject.SetActive(false);
+        BulletClip4Image.gameObject.SetActive(false);
+        BulletClip4Button.gameObject.SetActive(false);
+        ArrowImage.gameObject.SetActive(false);
+        ArrowButton.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -89,8 +155,95 @@ public class Inventory : MonoBehaviour
         }
 
         CheckInventory();
+        CheckWeapons();
+        CheckKeys();
+        CheckAmmo();
     }
 
+    void CheckKeys() 
+    {
+        if (SaveScript.CabinKey == true)
+        {
+            CabinKey.gameObject.SetActive(true);
+        }
+        if (SaveScript.HouseKey == true)
+        {
+            HouseKey.gameObject.SetActive(true);
+        }
+        if (SaveScript.RoomKey == true)
+        {
+            RoomKey.gameObject.SetActive(true);
+        }
+    }
+
+    void CheckAmmo()
+    {
+        if (SaveScript.BulletClips == 0)
+        {
+            BulletClip1Image.gameObject.SetActive(false);
+            BulletClip1Button.gameObject.SetActive(false);
+            BulletClip2Image.gameObject.SetActive(false);
+            BulletClip2Button.gameObject.SetActive(false);
+            BulletClip3Image.gameObject.SetActive(false);
+            BulletClip3Button.gameObject.SetActive(false);
+            BulletClip4Image.gameObject.SetActive(false);
+            BulletClip4Button.gameObject.SetActive(false);
+        }
+        if (SaveScript.BulletClips == 1)
+        {
+            BulletClip1Image.gameObject.SetActive(true);
+            BulletClip1Button.gameObject.SetActive(true);
+            BulletClip2Image.gameObject.SetActive(false);
+            BulletClip2Button.gameObject.SetActive(false);
+            BulletClip3Image.gameObject.SetActive(false);
+            BulletClip3Button.gameObject.SetActive(false);
+            BulletClip4Image.gameObject.SetActive(false);
+            BulletClip4Button.gameObject.SetActive(false);
+        }
+        if (SaveScript.BulletClips == 2)
+        {
+            BulletClip1Image.gameObject.SetActive(true);
+            BulletClip1Button.gameObject.SetActive(false);
+            BulletClip2Image.gameObject.SetActive(true);
+            BulletClip2Button.gameObject.SetActive(true);
+            BulletClip3Image.gameObject.SetActive(false);
+            BulletClip3Button.gameObject.SetActive(false);
+            BulletClip4Image.gameObject.SetActive(false);
+            BulletClip4Button.gameObject.SetActive(false);
+        }
+        if (SaveScript.BulletClips == 3)
+        {
+            BulletClip1Image.gameObject.SetActive(true);
+            BulletClip1Button.gameObject.SetActive(false);
+            BulletClip2Image.gameObject.SetActive(true);
+            BulletClip2Button.gameObject.SetActive(false);
+            BulletClip3Image.gameObject.SetActive(true);
+            BulletClip3Button.gameObject.SetActive(true);
+            BulletClip4Image.gameObject.SetActive(false);
+            BulletClip4Button.gameObject.SetActive(false);
+        }
+        if (SaveScript.BulletClips == 4)
+        {
+            BulletClip1Image.gameObject.SetActive(true);
+            BulletClip1Button.gameObject.SetActive(false);
+            BulletClip2Image.gameObject.SetActive(true);
+            BulletClip2Button.gameObject.SetActive(false);
+            BulletClip3Image.gameObject.SetActive(true);
+            BulletClip3Button.gameObject.SetActive(false);
+            BulletClip4Image.gameObject.SetActive(true);
+            BulletClip4Button.gameObject.SetActive(true);
+        }
+        if (SaveScript.ArrowRefill == false)
+        {
+            ArrowImage.gameObject.SetActive(false);
+            ArrowButton.gameObject.SetActive(false);
+        }
+        if (SaveScript.ArrowRefill == true) 
+        {
+            ArrowImage.gameObject.SetActive(true);
+            ArrowButton.gameObject.SetActive(true);
+        }
+    }
     void CheckInventory()
     {
         // Apples
@@ -259,6 +412,34 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void CheckWeapons()
+    {
+        if (SaveScript.Knife == true)
+        {
+            KnifeImage.gameObject.SetActive(true);
+            KnifeButton.gameObject.SetActive(true);
+        }
+        if (SaveScript.Axe == true)
+        {
+            AxeImage.gameObject.SetActive(true);
+            AxeButton.gameObject.SetActive(true);
+        }
+        if (SaveScript.Gun == true)
+        {
+            GunImage.gameObject.SetActive(true);
+            GunButton.gameObject.SetActive(true);
+        }
+        if (SaveScript.Crossbow == true)
+        {
+            CrossbowImage.gameObject.SetActive(true);
+            CrossbowButton.gameObject.SetActive(true);
+        }
+        if (SaveScript.Bat == true) 
+        {
+            BatImage.gameObject.SetActive(true);
+            BatButton.gameObject.SetActive(true);
+        }
+    }
     public void HealthUpdate()
     {
         if (SaveScript.PlayerHealth < 100)
