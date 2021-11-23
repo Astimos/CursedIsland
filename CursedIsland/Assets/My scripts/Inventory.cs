@@ -9,6 +9,17 @@ public class Inventory : MonoBehaviour
     private AudioSource MyPlayer;
     [SerializeField] AudioClip AppleBite;
     [SerializeField] AudioClip BatteryChange;
+    [SerializeField] AudioClip WeaponChange;
+    [SerializeField] AudioClip GunShot;
+    [SerializeField] AudioClip ArrowShot;
+    [SerializeField] GameObject PlayerArms;
+    [SerializeField] GameObject Knife;
+    [SerializeField] GameObject Bat;
+    [SerializeField] GameObject Axe;
+    [SerializeField] GameObject Gun;
+    [SerializeField] GameObject Crossbow;
+
+    [SerializeField] Animator Anim;
 
     // Apples
     [SerializeField] GameObject AppleImage1;
@@ -143,7 +154,7 @@ public class Inventory : MonoBehaviour
                 InventoryMenu.gameObject.SetActive(true);
                 InventoryActive = true;
                 Time.timeScale = 0f;
-                Cursor.visible = true;
+                UnityEngine.Cursor.visible = true;
             }
             else if (InventoryActive == true)
             {
@@ -160,7 +171,7 @@ public class Inventory : MonoBehaviour
         CheckAmmo();
     }
 
-    void CheckKeys() 
+    void CheckKeys()
     {
         if (SaveScript.CabinKey == true)
         {
@@ -238,7 +249,7 @@ public class Inventory : MonoBehaviour
             ArrowImage.gameObject.SetActive(false);
             ArrowButton.gameObject.SetActive(false);
         }
-        if (SaveScript.ArrowRefill == true) 
+        if (SaveScript.ArrowRefill == true)
         {
             ArrowImage.gameObject.SetActive(true);
             ArrowButton.gameObject.SetActive(true);
@@ -434,7 +445,7 @@ public class Inventory : MonoBehaviour
             CrossbowImage.gameObject.SetActive(true);
             CrossbowButton.gameObject.SetActive(true);
         }
-        if (SaveScript.Bat == true) 
+        if (SaveScript.Bat == true)
         {
             BatImage.gameObject.SetActive(true);
             BatButton.gameObject.SetActive(true);
@@ -450,7 +461,7 @@ public class Inventory : MonoBehaviour
             MyPlayer.clip = AppleBite;
             MyPlayer.Play();
 
-            if (SaveScript.PlayerHealth > 100) 
+            if (SaveScript.PlayerHealth > 100)
             {
                 SaveScript.PlayerHealth = 100;
             }
@@ -463,5 +474,55 @@ public class Inventory : MonoBehaviour
         SaveScript.Batteries -= 1;
         MyPlayer.clip = BatteryChange;
         MyPlayer.Play();
+    }
+
+    public void AssignKnife()
+    {
+        PlayerArms.gameObject.SetActive(true);
+        Knife.gameObject.SetActive(true);
+        Anim.SetBool("Melee", true);
+        MyPlayer.clip = WeaponChange;
+        MyPlayer.Play();
+    }
+    public void AssignBat()
+    {
+        PlayerArms.gameObject.SetActive(true);
+        Bat.gameObject.SetActive(true);
+        Anim.SetBool("Melee", true);
+        MyPlayer.clip = WeaponChange;
+        MyPlayer.Play();
+    }
+    public void AssignAxe()
+    {
+        PlayerArms.gameObject.SetActive(true);
+        Axe.gameObject.SetActive(true);
+        Anim.SetBool("Melee", true);
+        MyPlayer.clip = WeaponChange;
+        MyPlayer.Play();
+    }
+    public void AssignGun()
+    {
+        PlayerArms.gameObject.SetActive(true);
+        Gun.gameObject.SetActive(true);
+        Anim.SetBool("Melee", false);
+        MyPlayer.clip = GunShot;
+        MyPlayer.Play();
+    }
+    public void AssignCrossbow()
+    {
+        PlayerArms.gameObject.SetActive(true);
+        Crossbow.gameObject.SetActive(true);
+        Anim.SetBool("Melee", false);
+        MyPlayer.clip = ArrowShot;
+        MyPlayer.Play();
+    }
+
+    public void WeaponsOff() 
+    {
+        Axe.gameObject.SetActive(false);
+        Bat.gameObject.SetActive(false);
+        Knife.gameObject.SetActive(false);
+        Crossbow.gameObject.SetActive(false);
+        Gun.gameObject.SetActive(false);
     }
 }
