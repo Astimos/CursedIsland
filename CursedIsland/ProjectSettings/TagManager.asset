@@ -16,6 +16,7 @@ TagManager:
   - HouseKey
   - Ammo
   - Arrows
+  - Door
   layers:
   - Default
   - TransparentFX

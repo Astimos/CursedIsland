@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BatteryPower : MonoBehaviour
 {
     [SerializeField] Image BatteryUI;
-    [SerializeField] float DrainTime = 15.0f;
+    [SerializeField] float DrainTime = 180.0f;
     [SerializeField] float Power;
 
     // Update is called once per frame

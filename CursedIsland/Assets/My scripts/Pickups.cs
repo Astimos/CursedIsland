@@ -183,6 +183,14 @@ public class Pickups : MonoBehaviour
                     }
                 }
             }
+            else if (hit.transform.tag == "Door")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    hit.transform.gameObject.SendMessageUpwards("DoorOpen");
+                }
+            }
             else
             {
                 CanSeePickup = false;
