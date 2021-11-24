@@ -13,6 +13,9 @@ public class DoorScript : MonoBehaviour
     [SerializeField] bool Cabin;
     [SerializeField] bool Room;
     [SerializeField] bool House;
+    public bool Locked;
+    public string DoorType;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +26,30 @@ public class DoorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Cabin == true)
+        {
+            DoorType = "Cabin";
+            if (SaveScript.CabinKey == true)
+            {
+                Locked = false;
+            }
+        }
+        if (Room == true)
+        {
+            DoorType = "Room";
+            if (SaveScript.RoomKey == true)
+            {
+                Locked = false;
+            }
+        }
+        if (House == true)
+        {
+            DoorType = "House";
+            if (SaveScript.HouseKey == true)
+            {
+                Locked = false;
+            }
+        }
     }
 
     public void DoorOpen()
@@ -32,19 +58,19 @@ public class DoorScript : MonoBehaviour
         {
             Anim.SetTrigger("Open");
             IsOpen = true;
-            if (Cabin == true) 
+            if (Cabin == true)
             {
                 MyPlayer.clip = CabinSound;
-                MyPlayer.Play();
-            }
-            if (House == true)
-            {
-                MyPlayer.clip = HouseSound;
                 MyPlayer.Play();
             }
             if (Room == true)
             {
                 MyPlayer.clip = RoomSound;
+                MyPlayer.Play();
+            }
+            if (House == true)
+            {
+                MyPlayer.clip = HouseSound;
                 MyPlayer.Play();
             }
         }
@@ -57,14 +83,14 @@ public class DoorScript : MonoBehaviour
                 MyPlayer.clip = CabinSound;
                 MyPlayer.Play();
             }
-            if (House == true)
-            {
-                MyPlayer.clip = HouseSound;
-                MyPlayer.Play();
-            }
             if (Room == true)
             {
                 MyPlayer.clip = RoomSound;
+                MyPlayer.Play();
+            }
+            if (House == true)
+            {
+                MyPlayer.clip = HouseSound;
                 MyPlayer.Play();
             }
         }

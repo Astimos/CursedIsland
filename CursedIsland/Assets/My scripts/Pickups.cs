@@ -46,110 +46,6 @@ public class Pickups : MonoBehaviour
                     }
                 }
             }
-            else if (hit.transform.tag == "Knife")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.Knife == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.Knife = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
-            else if (hit.transform.tag == "Axe")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.Axe == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.Axe = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
-            else if (hit.transform.tag == "Crossbow")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.Crossbow == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.Crossbow = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
-            else if (hit.transform.tag == "Bat")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.Bat == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.Bat = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
-            else if (hit.transform.tag == "Gun")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.Gun == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.Gun = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
-            else if (hit.transform.tag == "CabinKey")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.CabinKey == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.CabinKey = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
-            else if (hit.transform.tag == "RoomKey")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.RoomKey == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.RoomKey = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
-            else if (hit.transform.tag == "HouseKey")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.HouseKey == false)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.HouseKey = true;
-                        MyPlayer.Play();
-                    }
-                }
-            }
             else if (hit.transform.tag == "Battery")
             {
                 CanSeePickup = true;
@@ -163,6 +59,132 @@ public class Pickups : MonoBehaviour
                     }
                 }
             }
+            else if (hit.transform.tag == "Knife")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.Knife == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.Knife = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "Axe")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.Axe == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.Axe = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "Bat")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.Bat == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.Bat = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "Gun")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.Gun == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.Gun = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "Crossbow")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.Crossbow == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.Crossbow = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "CabinKey")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.CabinKey == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.CabinKey = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "HouseKey")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.HouseKey == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.HouseKey = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "RoomKey")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.RoomKey == false)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.RoomKey = true;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
+            else if (hit.transform.tag == "Ammo")
+            {
+                CanSeePickup = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (SaveScript.BulletClips < 4)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        SaveScript.BulletClips = +1;
+                        MyPlayer.Play();
+                    }
+                }
+
+            }
             else if (hit.transform.tag == "Arrows")
             {
                 CanSeePickup = true;
@@ -175,67 +197,63 @@ public class Pickups : MonoBehaviour
                         MyPlayer.Play();
                     }
                 }
+
             }
-            else if (hit.transform.tag == "Ammo")
-            {
-                CanSeePickup = true;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    if (SaveScript.BulletClips < 4)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        SaveScript.BulletClips += 1;
-                        MyPlayer.Play();
-                    }
-                }
-            }
+
             else if (hit.transform.tag == "Door")
             {
                 CanSeeDoor = true;
-                if (hit.transform.gameObject.GetComponentInParent<DoorScript>().IsOpen == false)
+                if (hit.transform.gameObject.GetComponentInParent<DoorScript>().Locked == false)
                 {
-                    DoorText.text = "Press E to Open";
+                    if (hit.transform.gameObject.GetComponentInParent<DoorScript>().IsOpen == false)
+                    {
+                        DoorText.text = "Press E to open";
+                    }
+                    if (hit.transform.gameObject.GetComponentInParent<DoorScript>().IsOpen == true)
+                    {
+                        DoorText.text = "Press E to close";
+                    }
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        hit.transform.gameObject.SendMessageUpwards("DoorOpen");
+                    }
                 }
-
-                if (hit.transform.gameObject.GetComponentInParent<DoorScript>().IsOpen == true)
+                else if (hit.transform.gameObject.GetComponentInParent<DoorScript>().Locked == true)
                 {
-                    DoorText.text = "Press E to Close";
-                }
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    hit.transform.gameObject.SendMessageUpwards("DoorOpen");
+                    DoorText.text = "You need the " + hit.transform.gameObject.GetComponentInParent<DoorScript>().DoorType + " key";
                 }
 
             }
+
             else
             {
                 CanSeePickup = false;
                 CanSeeDoor = false;
             }
-
         }
 
-                if (CanSeePickup == true)
-                {
-                    PickupMessage.gameObject.SetActive(true);
-                    RayDistance = 1000f;
-                }
-                if (CanSeePickup == false)
-                {
-                    PickupMessage.gameObject.SetActive(false);
-                    RayDistance = Distance;
-                }
+        if (CanSeePickup == true)
+        {
+            PickupMessage.gameObject.SetActive(true);
+            RayDistance = 1000f;
+        }
+        if (CanSeePickup == false)
+        {
+            PickupMessage.gameObject.SetActive(false);
+            RayDistance = Distance;
+        }
 
-                if (CanSeeDoor == true)
-                {
-                    DoorMessage.gameObject.SetActive(true);
-                    RayDistance = 1000f;
-                }
-                if (CanSeeDoor == false)
-                {
-                    DoorMessage.gameObject.SetActive(false);
-                    RayDistance = Distance;
-                }
+        if (CanSeeDoor == true)
+        {
+            DoorMessage.gameObject.SetActive(true);
+            RayDistance = 1000f;
+        }
+        if (CanSeeDoor == false)
+        {
+            DoorMessage.gameObject.SetActive(false);
+            RayDistance = Distance;
+        }
+
+
     }
 }

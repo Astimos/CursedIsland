@@ -10,7 +10,7 @@ public class HealthScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HealthText.text = SaveScript.PlayerHealth+ "%";
+        HealthText.text = SaveScript.PlayerHealth + "%";
     }
 
     // Update is called once per frame

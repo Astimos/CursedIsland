@@ -9,10 +9,11 @@ public class BatteryPower : MonoBehaviour
     [SerializeField] float DrainTime = 180.0f;
     [SerializeField] float Power;
 
+
     // Update is called once per frame
     void Update()
     {
-        if (SaveScript.BatteryRefill == true) 
+        if (SaveScript.BatteryRefill == true)
         {
             SaveScript.BatteryRefill = false;
             BatteryUI.fillAmount = 1.0f;

@@ -45,8 +45,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject BatteryImage4;
     [SerializeField] GameObject BatteryButton4;
 
-    // Weapons
-
+    //Weapons
     [SerializeField] GameObject KnifeImage;
     [SerializeField] GameObject KnifeButton;
     [SerializeField] GameObject BatImage;
@@ -59,13 +58,11 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject CrossbowButton;
 
     //Keys
-
     [SerializeField] GameObject CabinKey;
     [SerializeField] GameObject HouseKey;
     [SerializeField] GameObject RoomKey;
 
-    // Ammo
-
+    //Ammo
     [SerializeField] GameObject BulletClip1Image;
     [SerializeField] GameObject BulletClip1Button;
     [SerializeField] GameObject BulletClip2Image;
@@ -85,7 +82,7 @@ public class Inventory : MonoBehaviour
         Cursor.visible = false;
         MyPlayer = GetComponent<AudioSource>();
 
-        // Apples
+        //Apples
         AppleImage1.gameObject.SetActive(false);
         AppleButton1.gameObject.SetActive(false);
         AppleImage2.gameObject.SetActive(false);
@@ -99,8 +96,7 @@ public class Inventory : MonoBehaviour
         AppleImage6.gameObject.SetActive(false);
         AppleButton6.gameObject.SetActive(false);
 
-
-        // Batteries
+        //Batteries
         BatteryImage1.gameObject.SetActive(false);
         BatteryButton1.gameObject.SetActive(false);
         BatteryImage2.gameObject.SetActive(false);
@@ -110,27 +106,24 @@ public class Inventory : MonoBehaviour
         BatteryImage4.gameObject.SetActive(false);
         BatteryButton4.gameObject.SetActive(false);
 
-        // Weapons 
-
+        //Weapons
         KnifeImage.gameObject.SetActive(false);
         KnifeButton.gameObject.SetActive(false);
-        AxeImage.gameObject.SetActive(false);
-        AxeButton.gameObject.SetActive(false);
         BatImage.gameObject.SetActive(false);
         BatButton.gameObject.SetActive(false);
+        AxeImage.gameObject.SetActive(false);
+        AxeButton.gameObject.SetActive(false);
         GunImage.gameObject.SetActive(false);
         GunButton.gameObject.SetActive(false);
         CrossbowImage.gameObject.SetActive(false);
         CrossbowButton.gameObject.SetActive(false);
 
-        // Keys
-
+        //Keys
         CabinKey.gameObject.SetActive(false);
-        RoomKey.gameObject.SetActive(false);
         HouseKey.gameObject.SetActive(false);
+        RoomKey.gameObject.SetActive(false);
 
-        // Ammo
-
+        //Ammo
         BulletClip1Image.gameObject.SetActive(false);
         BulletClip1Button.gameObject.SetActive(false);
         BulletClip2Image.gameObject.SetActive(false);
@@ -141,7 +134,6 @@ public class Inventory : MonoBehaviour
         BulletClip4Button.gameObject.SetActive(false);
         ArrowImage.gameObject.SetActive(false);
         ArrowButton.gameObject.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -154,7 +146,7 @@ public class Inventory : MonoBehaviour
                 InventoryMenu.gameObject.SetActive(true);
                 InventoryActive = true;
                 Time.timeScale = 0f;
-                UnityEngine.Cursor.visible = true;
+                Cursor.visible = true;
             }
             else if (InventoryActive == true)
             {
@@ -255,9 +247,10 @@ public class Inventory : MonoBehaviour
             ArrowButton.gameObject.SetActive(true);
         }
     }
+
     void CheckInventory()
     {
-        // Apples
+        //Apples
         if (SaveScript.Apples == 0)
         {
             AppleImage1.gameObject.SetActive(false);
@@ -364,8 +357,7 @@ public class Inventory : MonoBehaviour
             AppleButton6.gameObject.SetActive(true);
         }
 
-
-        // Batteries
+        //Batteries
         if (SaveScript.Batteries == 0)
         {
             BatteryImage1.gameObject.SetActive(false);
@@ -423,34 +415,43 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void CheckWeapons()
+    void CheckWeapons()
     {
         if (SaveScript.Knife == true)
         {
             KnifeImage.gameObject.SetActive(true);
             KnifeButton.gameObject.SetActive(true);
-        }
-        if (SaveScript.Axe == true)
-        {
-            AxeImage.gameObject.SetActive(true);
-            AxeButton.gameObject.SetActive(true);
-        }
-        if (SaveScript.Gun == true)
-        {
-            GunImage.gameObject.SetActive(true);
-            GunButton.gameObject.SetActive(true);
-        }
-        if (SaveScript.Crossbow == true)
-        {
-            CrossbowImage.gameObject.SetActive(true);
-            CrossbowButton.gameObject.SetActive(true);
+
         }
         if (SaveScript.Bat == true)
         {
+
             BatImage.gameObject.SetActive(true);
             BatButton.gameObject.SetActive(true);
+
+        }
+        if (SaveScript.Axe == true)
+        {
+
+            AxeImage.gameObject.SetActive(true);
+            AxeButton.gameObject.SetActive(true);
+
+        }
+        if (SaveScript.Gun == true)
+        {
+
+            GunImage.gameObject.SetActive(true);
+            GunButton.gameObject.SetActive(true);
+
+        }
+        if (SaveScript.Crossbow == true)
+        {
+
+            CrossbowImage.gameObject.SetActive(true);
+            CrossbowButton.gameObject.SetActive(true);
         }
     }
+
     public void HealthUpdate()
     {
         if (SaveScript.PlayerHealth < 100)
@@ -484,6 +485,7 @@ public class Inventory : MonoBehaviour
         MyPlayer.clip = WeaponChange;
         MyPlayer.Play();
     }
+
     public void AssignBat()
     {
         PlayerArms.gameObject.SetActive(true);
@@ -492,6 +494,7 @@ public class Inventory : MonoBehaviour
         MyPlayer.clip = WeaponChange;
         MyPlayer.Play();
     }
+
     public void AssignAxe()
     {
         PlayerArms.gameObject.SetActive(true);
@@ -500,6 +503,7 @@ public class Inventory : MonoBehaviour
         MyPlayer.clip = WeaponChange;
         MyPlayer.Play();
     }
+
     public void AssignGun()
     {
         PlayerArms.gameObject.SetActive(true);
@@ -508,6 +512,7 @@ public class Inventory : MonoBehaviour
         MyPlayer.clip = GunShot;
         MyPlayer.Play();
     }
+
     public void AssignCrossbow()
     {
         PlayerArms.gameObject.SetActive(true);
@@ -517,12 +522,12 @@ public class Inventory : MonoBehaviour
         MyPlayer.Play();
     }
 
-    public void WeaponsOff() 
+    public void WeaponsOff()
     {
         Axe.gameObject.SetActive(false);
         Bat.gameObject.SetActive(false);
         Knife.gameObject.SetActive(false);
-        Crossbow.gameObject.SetActive(false);
         Gun.gameObject.SetActive(false);
+        Crossbow.gameObject.SetActive(false);
     }
 }
