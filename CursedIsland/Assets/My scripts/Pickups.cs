@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pickups : MonoBehaviour
 {
@@ -13,10 +14,15 @@ public class Pickups : MonoBehaviour
     private float RayDistance;
     private bool CanSeePickup = false;
 
+    private bool CanSeeDoor = false;
+    [SerializeField] GameObject DoorMessage;
+    [SerializeField] Text DoorText;
+
     // Start is called before the first frame update
     void Start()
     {
         PickupMessage.gameObject.SetActive(false);
+        DoorMessage.gameObject.SetActive(false);
         PlayerArms.gameObject.SetActive(false);
         RayDistance = Distance;
         MyPlayer = GetComponent<AudioSource>();
@@ -185,15 +191,27 @@ public class Pickups : MonoBehaviour
             }
             else if (hit.transform.tag == "Door")
             {
-                CanSeePickup = true;
+                CanSeeDoor = true;
+                if (hit.transform.gameObject.GetComponentInParent<DoorScript>().IsOpen == false)
+                {
+                    DoorText.text = "Press E to Open";
+                }
+
+                if (hit.transform.gameObject.GetComponentInParent<DoorScript>().IsOpen == true)
+                {
+                    DoorText.text = "Press E to Close";
+                }
+
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     hit.transform.gameObject.SendMessageUpwards("DoorOpen");
                 }
+
             }
             else
             {
                 CanSeePickup = false;
+                CanSeeDoor = false;
             }
 
         }
@@ -206,6 +224,17 @@ public class Pickups : MonoBehaviour
                 if (CanSeePickup == false)
                 {
                     PickupMessage.gameObject.SetActive(false);
+                    RayDistance = Distance;
+                }
+
+                if (CanSeeDoor == true)
+                {
+                    DoorMessage.gameObject.SetActive(true);
+                    RayDistance = 1000f;
+                }
+                if (CanSeeDoor == false)
+                {
+                    DoorMessage.gameObject.SetActive(false);
                     RayDistance = Distance;
                 }
     }
