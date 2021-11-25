@@ -6,9 +6,11 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour
 {
     private NavMeshAgent Nav;
+    private Animator Anim;
     private Transform TheTarget;
     private float DistanceToTarget;
     private int TargetNumber = 1;
+    private bool HasStopped = false;
 
     [SerializeField] int MaxTargets = 10;
     [SerializeField] Transform Target1;
@@ -26,6 +28,7 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         Nav = GetComponent<NavMeshAgent>();
+        Anim = GetComponent<Animator>();
         TheTarget = Target1;
     }
 
@@ -36,15 +39,14 @@ public class EnemyMove : MonoBehaviour
         if (DistanceToTarget > StopDistance) 
         {
             Nav.SetDestination(TheTarget.position);
+            Anim.SetInteger("State", 0);
+            Nav.isStopped = false;
         }
         if (DistanceToTarget < StopDistance)
         {
-            TargetNumber++;
-            if (TargetNumber > MaxTargets)
-            {
-                TargetNumber = 1;
-            }
-            SetTarget();
+            Nav.isStopped = true;
+            Anim.SetInteger("State", 1);
+            StartCoroutine(LookAround());
         }
     }
 
@@ -89,6 +91,24 @@ public class EnemyMove : MonoBehaviour
         if (TargetNumber == 10)
         {
             TheTarget = Target10;
+        }
+    }
+
+    IEnumerator LookAround()
+    {
+        yield return new WaitForSeconds(6.46f);
+        if(HasStopped == false)
+        {
+            HasStopped = true;
+            TargetNumber++;
+            if (TargetNumber > MaxTargets)
+            {
+                TargetNumber = 1;
+            }
+            SetTarget();
+
+            yield return new WaitForSeconds(6.46f);
+            HasStopped = false;
         }
     }
 }
