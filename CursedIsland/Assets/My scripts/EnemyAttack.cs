@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Nav = GetComponent<NavMeshAgent>();
+        Nav = GetComponentInParent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -45,23 +45,67 @@ public class EnemyAttack : MonoBehaviour
                 {
                     Debug.Log("I Can See the Player");
                     RunToPlayer = true;
+                    FailedChecks = 0;
                 }
                 if (blocked == true) 
                 {
                     Debug.Log("Where did the player go");
                     RunToPlayer = false;
                     Anim.SetInteger("State", 1);
+                    FailedChecks++;
                 }
 
                 StartCoroutine(TimedCheck());
             }
+        }
+
+        if (RunToPlayer == true)
+        {
+
+            Enemy.GetComponent<EnemyMove>().enabled = false;
+            if (DistanceToPlayer > AttackDistance)
+            {
+                Nav.isStopped = false;
+                Anim.SetInteger("State", 2);
+                Nav.acceleration = 24;
+                Nav.SetDestination(Player.position);
+                Nav.speed = ChaseSpeed;
+            }
+            if (DistanceToPlayer < AttackDistance)
+            {
+                Nav.isStopped = true;
+                Debug.Log("I am Attacking!");
+                // Anim.SetInteger("State", 2);
+                Nav.acceleration = 180;
+            }
+        }
+        else if (RunToPlayer == false)
+        {
+
+            Nav.isStopped = true;
+        
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            RunToPlayer = true;
         }
     }
 
     IEnumerator TimedCheck() 
     {
         yield return new WaitForSeconds(CheckTime);
-
         IsChecking = true;
+
+        if (FailedChecks > MaxChecks) 
+        {
+            Enemy.GetComponent<EnemyMove>().enabled = true;
+            Nav.isStopped = false;
+            Nav.speed = WalkSpeed;
+            FailedChecks = 0;
+        }
     }
 }
