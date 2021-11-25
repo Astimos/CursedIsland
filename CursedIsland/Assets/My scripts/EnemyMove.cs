@@ -11,8 +11,10 @@ public class EnemyMove : MonoBehaviour
     private float DistanceToTarget;
     private int TargetNumber = 1;
     private bool HasStopped = false;
-
+    private bool Randomizer = true;
+    private int NextTargetNumber;
     [SerializeField] int MaxTargets = 10;
+    [SerializeField] float StopTime = 2.0f;
     [SerializeField] Transform Target1;
     [SerializeField] Transform Target2;
     [SerializeField] Transform Target3;
@@ -41,6 +43,7 @@ public class EnemyMove : MonoBehaviour
             Nav.SetDestination(TheTarget.position);
             Anim.SetInteger("State", 0);
             Nav.isStopped = false;
+            NextTargetNumber = TargetNumber;
         }
         if (DistanceToTarget < StopDistance)
         {
@@ -96,19 +99,34 @@ public class EnemyMove : MonoBehaviour
 
     IEnumerator LookAround()
     {
-        yield return new WaitForSeconds(6.46f);
-        if(HasStopped == false)
+        yield return new WaitForSeconds(StopTime);
+        if (HasStopped == false)
         {
             HasStopped = true;
-            TargetNumber++;
-            if (TargetNumber > MaxTargets)
+            if (Randomizer == true)
             {
-                TargetNumber = 1;
+                Randomizer = false;
+                TargetNumber = Random.Range(1, MaxTargets);
+
+                if(TargetNumber == NextTargetNumber)
+                {
+
+                    TargetNumber++;
+
+                    if (TargetNumber >= MaxTargets)
+                    {
+                        TargetNumber = 1;
+                    }
+
+                }
+
             }
+        
             SetTarget();
 
-            yield return new WaitForSeconds(6.46f);
+            yield return new WaitForSeconds(StopTime);
             HasStopped = false;
+            Randomizer = true;
         }
     }
 }
