@@ -10,6 +10,7 @@ public class LightSettingsPlayer : MonoBehaviour
     [SerializeField] PostProcessProfile NightVision;
     [SerializeField] GameObject NightVisionOverlay;
     [SerializeField] GameObject Flashlight;
+    [SerializeField] GameObject EnemyFlashlight;
 
     private bool NightVisionActive = false;
     private bool FlashlightActive = false;
@@ -18,6 +19,7 @@ public class LightSettingsPlayer : MonoBehaviour
     {
         NightVisionOverlay.gameObject.SetActive(false);
         Flashlight.gameObject.SetActive(false);
+        EnemyFlashlight.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,12 +51,14 @@ public class LightSettingsPlayer : MonoBehaviour
                 {
                     FlashlightActive = true;
                     Flashlight.gameObject.SetActive(true);
+                    EnemyFlashlight.gameObject.SetActive(true);
                     SaveScript.FlashLightOn = true;
                 }
                 else
                 {
                     FlashlightActive = false;
                     Flashlight.gameObject.SetActive(false);
+                    EnemyFlashlight.gameObject.SetActive(false);
                     SaveScript.FlashLightOn = false;
                 }
             }
@@ -67,6 +71,7 @@ public class LightSettingsPlayer : MonoBehaviour
             SaveScript.NVLightOn = false;
             FlashlightActive = false;
             Flashlight.gameObject.SetActive(false);
+            EnemyFlashlight.gameObject.SetActive(false);
             SaveScript.FlashLightOn = false;
         }
     }
