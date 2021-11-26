@@ -147,6 +147,9 @@ public class Inventory : MonoBehaviour
                 InventoryActive = true;
                 Time.timeScale = 0f;
                 Cursor.visible = true;
+                SaveScript.HaveAxe = false;
+                SaveScript.HaveBat = false;
+                SaveScript.HaveKnife = false;
             }
             else if (InventoryActive == true)
             {
@@ -484,6 +487,9 @@ public class Inventory : MonoBehaviour
         Anim.SetBool("Melee", true);
         MyPlayer.clip = WeaponChange;
         MyPlayer.Play();
+        SaveScript.HaveKnife = true;
+        SaveScript.HaveBat = false;
+        SaveScript.HaveAxe = false;
     }
 
     public void AssignBat()
@@ -493,6 +499,9 @@ public class Inventory : MonoBehaviour
         Anim.SetBool("Melee", true);
         MyPlayer.clip = WeaponChange;
         MyPlayer.Play();
+        SaveScript.HaveBat = true;
+        SaveScript.HaveKnife = false;
+        SaveScript.HaveAxe = false;
     }
 
     public void AssignAxe()
@@ -502,6 +511,9 @@ public class Inventory : MonoBehaviour
         Anim.SetBool("Melee", true);
         MyPlayer.clip = WeaponChange;
         MyPlayer.Play();
+        SaveScript.HaveAxe = true;
+        SaveScript.HaveBat = false;
+        SaveScript.HaveKnife = false;
     }
 
     public void AssignGun()

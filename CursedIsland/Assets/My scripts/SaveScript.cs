@@ -23,4 +23,7 @@ public class SaveScript : MonoBehaviour
     public static bool RoomKey = false;
     public static int BulletClips = 0;
     public static bool ArrowRefill = false;
+    public static bool HaveKnife = false;
+    public static bool HaveBat = false;
+    public static bool HaveAxe = false;
 }
