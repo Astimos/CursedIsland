@@ -23,10 +23,13 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] float AttackDistance = 2.3f;
     [SerializeField] float AttackRotateSpeed = 2.0f;
     [SerializeField] float CheckTime = 3.0f;
+    [SerializeField] GameObject ChaseMusic;
+    [SerializeField] GameObject HurtUI;
     // Start is called before the first frame update
     void Start()
     {
         Nav = GetComponentInParent<NavMeshAgent>();
+        ChaseMusic.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -63,6 +66,7 @@ public class EnemyAttack : MonoBehaviour
         {
 
             Enemy.GetComponent<EnemyMove>().enabled = false;
+            ChaseMusic.gameObject.SetActive(true);
             if (DistanceToPlayer > AttackDistance)
             {
                 Nav.isStopped = false;
@@ -70,13 +74,19 @@ public class EnemyAttack : MonoBehaviour
                 Nav.acceleration = 24;
                 Nav.SetDestination(Player.position);
                 Nav.speed = ChaseSpeed;
+                HurtUI.gameObject.SetActive(false);
             }
-            if (DistanceToPlayer < AttackDistance)
+            if (DistanceToPlayer < AttackDistance -0.5f)
             {
                 Nav.isStopped = true;
                 Debug.Log("I am Attacking!");
-                // Anim.SetInteger("State", 2);
+                Anim.SetInteger("State", 3);
                 Nav.acceleration = 180;
+                HurtUI.gameObject.SetActive(true);
+
+                Vector3 Pos = (Player.position - Enemy.transform.position).normalized;
+                Quaternion PosRotation = Quaternion.LookRotation(new Vector3(Pos.x, 0, Pos.z));
+                Enemy.transform.rotation = Quaternion.Slerp(Enemy.transform.rotation, PosRotation, Time.deltaTime * AttackRotateSpeed);
             }
         }
         else if (RunToPlayer == false)
@@ -106,6 +116,7 @@ public class EnemyAttack : MonoBehaviour
             Nav.isStopped = false;
             Nav.speed = WalkSpeed;
             FailedChecks = 0;
+            ChaseMusic.gameObject.SetActive(false);
         }
     }
 }
