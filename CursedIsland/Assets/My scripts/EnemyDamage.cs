@@ -7,7 +7,7 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] int EnemyHealth = 100;
     private AudioSource MyPlayer;
     [SerializeField] AudioSource StabPlayer;
-    private bool HasDied = false;
+    public bool HasDied = false;
     private Animator Anim;
     [SerializeField] GameObject EnemyObject;
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class EnemyDamage : MonoBehaviour
             if (HasDied == false) 
             {
                 Anim.SetTrigger("Death");
+                Anim.SetBool("IsDead", true);
                 HasDied = true;
 
                 Destroy(EnemyObject, 25f);
@@ -34,9 +35,21 @@ public class EnemyDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Knife")) 
+        if (other.gameObject.CompareTag("PKnife")) 
         {
-            EnemyHealth -= 25;
+            EnemyHealth -= 10;
+            MyPlayer.Play();
+            StabPlayer.Play();
+        }
+        if (other.gameObject.CompareTag("PAxe"))
+        {
+            EnemyHealth -= 20;
+            MyPlayer.Play();
+            StabPlayer.Play();
+        }
+        if (other.gameObject.CompareTag("PBat"))
+        {
+            EnemyHealth -= 15;
             MyPlayer.Play();
             StabPlayer.Play();
         }
