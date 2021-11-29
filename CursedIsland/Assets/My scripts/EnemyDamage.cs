@@ -10,11 +10,19 @@ public class EnemyDamage : MonoBehaviour
     public bool HasDied = false;
     private Animator Anim;
     [SerializeField] GameObject EnemyObject;
+    [SerializeField] GameObject BloodSpatKnife;
+    [SerializeField] GameObject BloodSpatBat;
+    [SerializeField] GameObject BloodSpatAxe;
+
+
     // Start is called before the first frame update
     void Start()
     {
         MyPlayer = GetComponent<AudioSource>();
         Anim = GetComponentInParent<Animator>();
+        BloodSpatKnife.gameObject.SetActive(false);
+        BloodSpatBat.gameObject.SetActive(false);
+        BloodSpatAxe.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,18 +48,21 @@ public class EnemyDamage : MonoBehaviour
             EnemyHealth -= 10;
             MyPlayer.Play();
             StabPlayer.Play();
+            BloodSpatKnife.gameObject.SetActive(true);
         }
         if (other.gameObject.CompareTag("PAxe"))
         {
             EnemyHealth -= 20;
             MyPlayer.Play();
             StabPlayer.Play();
+            BloodSpatAxe.gameObject.SetActive(true);
         }
         if (other.gameObject.CompareTag("PBat"))
         {
             EnemyHealth -= 15;
             MyPlayer.Play();
             StabPlayer.Play();
+            BloodSpatBat.gameObject.SetActive(true);
         }
     }
 }

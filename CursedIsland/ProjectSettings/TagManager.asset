@@ -18,6 +18,11 @@ TagManager:
   - Arrows
   - Door
   - Enemy
+  - PKnife
+  - PBat
+  - PAxe
+  - PGun
+  - PCrossbow
   layers:
   - Default
   - TransparentFX

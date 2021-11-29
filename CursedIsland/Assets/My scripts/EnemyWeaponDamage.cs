@@ -21,7 +21,7 @@ public class EnemyWeaponDamage : MonoBehaviour
                 SaveScript.PlayerHealth -= WeaponDamage;
                 SaveScript.HealthChanged = true;
                 MyPlayer.Play();
-                FPSArms.GetComponent<PlayerAttacks>().AttackStamina -= 1.7f;
+                FPSArms.GetComponent<PlayerAttacks>().AttackStamina -= 0.2f;
             }
         }
     }
