@@ -107,6 +107,10 @@ public class EnemyAttack : MonoBehaviour
         {
             Anim.SetTrigger("SmallReact");
         }
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            Anim.SetTrigger("BigReact");
+        }
     }
 
     IEnumerator TimedCheck() 
