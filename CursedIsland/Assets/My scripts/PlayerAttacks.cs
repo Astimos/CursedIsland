@@ -9,16 +9,17 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] float AttackDrain = 2;
     [SerializeField] float AttackRefill = 1;
     [SerializeField] float MaxAttackStamina = 10;
-    [SerializeField] GameObject Crosshair;
-    private AudioSource MyPlayer;
+    [SerializeField] GameObject Pointer;
     [SerializeField] AudioClip GunShotSound;
+    [SerializeField] AudioSource MyPlayer;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
         AttackStamina = MaxAttackStamina;
-        MyPlayer.GetComponent<AudioSource>();
+        Pointer.gameObject.SetActive(true);   
     }
 
     // Update is called once per frame
@@ -79,18 +80,21 @@ public class PlayerAttacks : MonoBehaviour
                 if (Input.GetKey(KeyCode.Mouse1))
                 {
                     Anim.SetBool("AimGun", true);
-                    Crosshair.gameObject.SetActive(false);
+                    Pointer.gameObject.SetActive(false);
                 }
                 if (Input.GetKeyUp(KeyCode.Mouse1))
                 {
                     Anim.SetBool("AimGun", false);
-                    Crosshair.gameObject.SetActive(true);
+                    Pointer.gameObject.SetActive(true);
                 }
 
-                if (Input.GetMouseButtonDown(0)) 
+                if (Input.GetMouseButtonDown(0))
                 {
-                    MyPlayer.clip = GunShotSound;
-                    MyPlayer.Play();
+                    if (SaveScript.Bullets > 0)
+                    {
+                        MyPlayer.clip = GunShotSound;
+                       // MyPlayer.Play();
+                    }
                 }
             }
         }

@@ -6,9 +6,10 @@ using UnityEngine;
 public class SimpleShoot : MonoBehaviour
 {
     [Header("Prefab Refrences")]
-    public GameObject bulletPrefab;
+    //public GameObject bulletPrefab;
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
+    public AudioSource GunShotPlayer;
 
     [Header("Location Refrences")]
     [SerializeField] private Animator gunAnimator;
@@ -17,7 +18,7 @@ public class SimpleShoot : MonoBehaviour
 
     [Header("Settings")]
     [Tooltip("Specify time to destory the casing object")] [SerializeField] private float destroyTimer = 2f;
-    [Tooltip("Bullet Speed")] [SerializeField] private float shotPower = 500f;
+    //[Tooltip("Bullet Speed")] [SerializeField] private float shotPower = 500f;
     [Tooltip("Casing Ejection Speed")] [SerializeField] private float ejectPower = 150f;
 
 
@@ -35,8 +36,15 @@ public class SimpleShoot : MonoBehaviour
         //If you want a different input, change it here
         if (Input.GetButtonDown("Fire1"))
         {
-            //Calls animation on the gun that has the relevant animation events that will fire
-            gunAnimator.SetTrigger("Fire");
+            if (SaveScript.Bullets > 0) 
+            {
+                //Calls animation on the gun that has the relevant animation events that will fire
+
+                if (Input.GetKey(KeyCode.Mouse1) && Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    gunAnimator.SetTrigger("Fire");
+                }
+            }
         }
     }
 
@@ -54,12 +62,17 @@ public class SimpleShoot : MonoBehaviour
             Destroy(tempFlash, destroyTimer);
         }
 
+        if (SaveScript.Bullets > 0) 
+        {
+            GunShotPlayer.Play();
+        }
+
         //cancels if there's no bullet prefeb
-        if (!bulletPrefab)
-        { return; }
+       // if (!bulletPrefab)
+      //  { return; }
 
         // Create a bullet and add force on it in direction of the barrel
-        Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+     //   Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
     }
 
@@ -81,5 +94,4 @@ public class SimpleShoot : MonoBehaviour
         //Destroy casing after X seconds
         Destroy(tempCasing, destroyTimer);
     }
-
 }

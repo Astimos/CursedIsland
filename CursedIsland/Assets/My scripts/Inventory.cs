@@ -18,6 +18,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject Axe;
     [SerializeField] GameObject Gun;
     [SerializeField] GameObject Crossbow;
+    [SerializeField] GameObject GunUI;
+    [SerializeField] GameObject BulletAmt;
 
     [SerializeField] Animator Anim;
 
@@ -77,6 +79,8 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GunUI.gameObject.SetActive(false);
+        BulletAmt.gameObject.SetActive(false);
         InventoryMenu.gameObject.SetActive(false);
         InventoryActive = false;
         Cursor.visible = false;
@@ -151,6 +155,8 @@ public class Inventory : MonoBehaviour
                 SaveScript.HaveBat = false;
                 SaveScript.HaveKnife = false;
                 SaveScript.HaveGun = false;
+                GunUI.gameObject.SetActive(false);
+                BulletAmt.gameObject.SetActive(false);
             }
             else if (InventoryActive == true)
             {
@@ -528,6 +534,8 @@ public class Inventory : MonoBehaviour
         SaveScript.HaveBat = false;
         SaveScript.HaveKnife = false;
         SaveScript.HaveAxe = false;
+        GunUI.gameObject.SetActive(true);
+        BulletAmt.gameObject.SetActive(true);
     }
 
     public void AssignCrossbow()
