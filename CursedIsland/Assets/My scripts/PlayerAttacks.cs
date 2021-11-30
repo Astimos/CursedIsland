@@ -9,18 +9,21 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] float AttackDrain = 2;
     [SerializeField] float AttackRefill = 1;
     [SerializeField] float MaxAttackStamina = 10;
+    [SerializeField] GameObject Crosshair;
+    private AudioSource MyPlayer;
+    [SerializeField] AudioClip GunShotSound;
 
     // Start is called before the first frame update
     void Start()
     {
         Anim = GetComponent<Animator>();
         AttackStamina = MaxAttackStamina;
+        MyPlayer.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Attack stamina" + AttackStamina);
         if (AttackStamina < MaxAttackStamina) 
         {
             AttackStamina += AttackRefill * Time.deltaTime;
@@ -68,6 +71,26 @@ public class PlayerAttacks : MonoBehaviour
                 {
                     Anim.SetTrigger("AxeRMB");
                     AttackStamina -= AttackDrain;
+                }
+            }
+
+            if (SaveScript.HaveGun == true)
+            {
+                if (Input.GetKey(KeyCode.Mouse1))
+                {
+                    Anim.SetBool("AimGun", true);
+                    Crosshair.gameObject.SetActive(false);
+                }
+                if (Input.GetKeyUp(KeyCode.Mouse1))
+                {
+                    Anim.SetBool("AimGun", false);
+                    Crosshair.gameObject.SetActive(true);
+                }
+
+                if (Input.GetMouseButtonDown(0)) 
+                {
+                    MyPlayer.clip = GunShotSound;
+                    MyPlayer.Play();
                 }
             }
         }

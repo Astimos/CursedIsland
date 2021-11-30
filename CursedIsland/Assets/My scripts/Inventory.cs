@@ -150,6 +150,7 @@ public class Inventory : MonoBehaviour
                 SaveScript.HaveAxe = false;
                 SaveScript.HaveBat = false;
                 SaveScript.HaveKnife = false;
+                SaveScript.HaveGun = false;
             }
             else if (InventoryActive == true)
             {
@@ -523,6 +524,10 @@ public class Inventory : MonoBehaviour
         Anim.SetBool("Melee", false);
         MyPlayer.clip = GunShot;
         MyPlayer.Play();
+        SaveScript.HaveGun = true;
+        SaveScript.HaveBat = false;
+        SaveScript.HaveKnife = false;
+        SaveScript.HaveAxe = false;
     }
 
     public void AssignCrossbow()
