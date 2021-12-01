@@ -179,8 +179,9 @@ public class Pickups : MonoBehaviour
                     if (SaveScript.BulletClips < 4)
                     {
                         Destroy(hit.transform.gameObject);
-                        SaveScript.BulletClips = +1;
+                        SaveScript.BulletClips = SaveScript.BulletClips + 1;
                         MyPlayer.Play();
+                        Debug.Log(SaveScript.BulletClips);
                     }
                 }
 

@@ -30,4 +30,5 @@ public class SaveScript : MonoBehaviour
     public static bool HaveCrossbow = false;
     public static int Bullets = 12;
     public static bool BulletDecount = false;
+    public static int Arrows = 6;
 }

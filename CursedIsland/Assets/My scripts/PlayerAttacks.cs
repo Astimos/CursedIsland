@@ -11,6 +11,7 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] float MaxAttackStamina = 10;
     [SerializeField] GameObject Pointer;
     [SerializeField] AudioClip GunShotSound;
+    [SerializeField] AudioClip BowShotSound;
     [SerializeField] AudioSource MyPlayer;
     
 
@@ -93,8 +94,31 @@ public class PlayerAttacks : MonoBehaviour
                     if (SaveScript.Bullets > 0)
                     {
                         MyPlayer.clip = GunShotSound;
-                       // MyPlayer.Play();
+                        // MyPlayer.Play();
                     }
+                }
+            }
+
+            if (SaveScript.HaveCrossbow == true)
+               {
+                if (Input.GetKey(KeyCode.Mouse1))
+                {
+                   Anim.SetBool("AimCrossbow", true);
+                   Pointer.gameObject.SetActive(false);
+                }
+                if (Input.GetKeyUp(KeyCode.Mouse1))
+                {
+                   Anim.SetBool("AimCrossbow", false);
+                   Pointer.gameObject.SetActive(true);
+                }
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                   if (SaveScript.Arrows > 0)
+                   {
+                       MyPlayer.clip = BowShotSound;
+                       // MyPlayer.Play();
+                   }
                 }
             }
         }

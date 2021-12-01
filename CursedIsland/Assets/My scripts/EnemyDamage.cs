@@ -64,5 +64,12 @@ public class EnemyDamage : MonoBehaviour
             StabPlayer.Play();
             BloodSpatBat.gameObject.SetActive(true);
         }
+        if (other.gameObject.CompareTag("PCrossbow"))
+        {
+            EnemyHealth -= 50;
+            MyPlayer.Play();
+            StabPlayer.Play();
+            Destroy(other.gameObject, 0.05f);
+        }
     }
 }

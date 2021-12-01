@@ -17,9 +17,12 @@ namespace Nokobot.Assets.Crossbow
 
         void Update()
         {
-            if(Input.GetButtonDown("Fire1"))
+            if (Input.GetKey(KeyCode.Mouse1) && Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Instantiate(arrowPrefab, arrowLocation.position, arrowLocation.rotation).GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * shotPower);
+                if (SaveScript.Arrows > 0)
+                {
+                    Instantiate(arrowPrefab, arrowLocation.position, arrowLocation.rotation).GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * shotPower);
+                }
             }
         }
     }

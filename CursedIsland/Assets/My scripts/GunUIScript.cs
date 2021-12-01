@@ -23,7 +23,7 @@ public class GunUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timer1);
+        BulletAmt.text = SaveScript.Bullets + "";
         timer1 -= Time.deltaTime;
         if (Input.GetKey(KeyCode.Mouse1) && Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -32,7 +32,6 @@ public class GunUIScript : MonoBehaviour
                 if(timer1 < 0.01f) 
                 { 
                     SaveScript.Bullets -= 1;
-                    BulletAmt.text = SaveScript.Bullets + "";
                     timer1 = time1;
                 }
             }

@@ -123,6 +123,10 @@ public class EnemyAttack : MonoBehaviour
         {
             Anim.SetTrigger("SmallReact");
         }
+        if (other.gameObject.CompareTag("PCrossbow"))
+        {
+            Anim.SetTrigger("BigReact");
+        }
     }
 
     IEnumerator TimedCheck() 
