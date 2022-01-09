@@ -12,7 +12,9 @@ namespace Nokobot.Assets.Crossbow
         void Start()
         {
             if (arrowLocation == null)
+            {
                 arrowLocation = transform;
+            }
         }
 
         void Update()
@@ -21,7 +23,7 @@ namespace Nokobot.Assets.Crossbow
             {
                 if (SaveScript.Arrows > 0)
                 {
-                    Instantiate(arrowPrefab, arrowLocation.position, arrowLocation.rotation).GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * shotPower);
+                   Instantiate(arrowPrefab, arrowLocation.position, arrowLocation.rotation).GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * shotPower);   
                 }
             }
         }
