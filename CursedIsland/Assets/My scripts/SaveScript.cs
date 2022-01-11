@@ -5,7 +5,7 @@ using UnityEngine;
 public class SaveScript : MonoBehaviour
 {
 
-    public static int PlayerHealth = 85;
+    public static int PlayerHealth = 100;
     public static bool HealthChanged = false;
     public static float BatteryPower = 1.0f;
     public static bool BatteryRefill = false;
@@ -31,4 +31,39 @@ public class SaveScript : MonoBehaviour
     public static int Bullets = 12;
     public static bool BulletDecount = false;
     public static int Arrows = 6;
+    public static bool NewGame = false;
+
+
+    private void Start()
+    {
+        if (NewGame == true) 
+        {
+    PlayerHealth = 100;
+    HealthChanged = false;
+    BatteryPower = 1.0f;
+    BatteryRefill = false;
+    FlashLightOn = false;
+    NVLightOn = false;
+    Apples = 0;
+    Batteries = 0;
+    Knife = false;
+    Bat = false;
+    Axe = false;
+    Gun = false;
+    Crossbow = false;
+    CabinKey = false;
+    HouseKey = false;
+    RoomKey = false;
+    BulletClips = 0;
+    ArrowRefill = false;
+    HaveKnife = false;
+    HaveBat = false;
+    HaveAxe = false;
+    HaveGun = false;
+    HaveCrossbow = false;
+    Bullets = 12;
+    BulletDecount = false;
+    Arrows = 6;
+        }
+    }
 }
