@@ -32,10 +32,67 @@ public class SaveScript : MonoBehaviour
     public static bool BulletDecount = false;
     public static int Arrows = 6;
     public static bool NewGame = false;
+    public static Transform Target1;
+    public static Transform Target2;
+    public static Transform Target3;
+    public static Transform Target4;
+    public static Transform Target5;
+    public static Transform Target6;
+    public static Transform Target7;
+    public static Transform Target8;
+    public static Transform Target9;
+    public static Transform Target10;
+    public static Transform PlayerChar;
+    public static GameObject Chase;
+    public static GameObject HurtScreen;
+    public static AudioSource StabSound;
+    public static GameObject SplatKnife;
+    public static GameObject SplatBat;
+    public static GameObject SplatAxe;
+    public static int MaxEnemiesOnScreen = 6;
+    public static int EnemiesOnScreen = 0;
+    public static int MaxEnemiesInGame = 100;
+    public static int EnemiesCurrent = 0;
 
+
+    [SerializeField] Transform _Target1;
+    [SerializeField] Transform _Target2;
+    [SerializeField] Transform _Target3;
+    [SerializeField] Transform _Target4;
+    [SerializeField] Transform _Target5;
+    [SerializeField] Transform _Target6;
+    [SerializeField] Transform _Target7;
+    [SerializeField] Transform _Target8;
+    [SerializeField] Transform _Target9;
+    [SerializeField] Transform _Target10;
+    [SerializeField] Transform PlayerPrefab;
+    [SerializeField] GameObject ChaseMusic;
+    [SerializeField] GameObject HurtUI;
+    [SerializeField] AudioSource StabPlayer;
+    [SerializeField] GameObject BloodSpatKnife;
+    [SerializeField] GameObject BloodSpatBat;
+    [SerializeField] GameObject BloodSpatAxe;
 
     private void Start()
     {
+        Target1 = _Target1;
+        Target2 = _Target2;
+        Target3 = _Target3;
+        Target4 = _Target4;
+        Target5 = _Target5;
+        Target6 = _Target6;
+        Target7 = _Target7;
+        Target8 = _Target8;
+        Target9 = _Target9;
+        Target10 = _Target10;
+        PlayerChar = PlayerPrefab;
+        Chase = ChaseMusic;
+        HurtScreen = HurtUI;
+        StabSound = StabPlayer;
+        SplatKnife = BloodSpatKnife;
+        SplatAxe = BloodSpatAxe;
+        SplatBat = BloodSpatBat;
+
         if (NewGame == true) 
         {
     PlayerHealth = 100;

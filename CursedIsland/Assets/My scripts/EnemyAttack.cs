@@ -26,16 +26,18 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] GameObject ChaseMusic;
     [SerializeField] GameObject HurtUI;
     [SerializeField] GameObject EnemyDamageZone;
+    private bool CanRun = false;
     // Start is called before the first frame update
     void Start()
     {
         Nav = GetComponentInParent<NavMeshAgent>();
-        ChaseMusic.gameObject.SetActive(false);
+        StartCoroutine(StartElement());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (CanRun == true) { 
         if (EnemyDamageZone.GetComponent<EnemyDamage>().HasDied == true)
         {
             ChaseMusic.gameObject.SetActive(false);
@@ -104,8 +106,9 @@ public class EnemyAttack : MonoBehaviour
         
         }
     }
+  }
 
-    private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -142,5 +145,16 @@ public class EnemyAttack : MonoBehaviour
             FailedChecks = 0;
             ChaseMusic.gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator StartElement()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Player = SaveScript.PlayerChar;
+        ChaseMusic = SaveScript.Chase;
+        HurtUI = SaveScript.HurtScreen;
+        ChaseMusic.gameObject.SetActive(false);
+        CanRun = true;
+        CheckTime = Random.Range(3, 15);
     }
 }

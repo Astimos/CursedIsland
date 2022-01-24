@@ -25,18 +25,20 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] Transform Target8;
     [SerializeField] Transform Target9;
     [SerializeField] Transform Target10;
+    private bool CanPatrol = false;
     [SerializeField] float StopDistance = 2.0f;
     // Start is called before the first frame update
     void Start()
     {
         Nav = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
-        TheTarget = Target1;
+        StartCoroutine(StartElement());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(CanPatrol == true) { 
         DistanceToTarget = Vector3.Distance(TheTarget.position, transform.position);
         if (DistanceToTarget > StopDistance) 
         {
@@ -52,6 +54,7 @@ public class EnemyMove : MonoBehaviour
             Anim.SetInteger("State", 1);
             StartCoroutine(LookAround());
         }
+      }
     }
 
     void SetTarget()
@@ -129,5 +132,22 @@ public class EnemyMove : MonoBehaviour
             HasStopped = false;
             Randomizer = true;
         }
+    }
+
+    IEnumerator StartElement()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Target1 = SaveScript.Target1;
+        Target2 = SaveScript.Target2;
+        Target3 = SaveScript.Target3;
+        Target4 = SaveScript.Target4;
+        Target5 = SaveScript.Target6;
+        Target7 = SaveScript.Target7;
+        Target8 = SaveScript.Target8;
+        Target9 = SaveScript.Target9;
+        Target10 = SaveScript.Target10;
+        TheTarget = Target1;
+        Nav.avoidancePriority = Random.Range(5, 65);
+        CanPatrol = true;
     }
 }
