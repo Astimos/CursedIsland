@@ -32,6 +32,7 @@ public class SaveScript : MonoBehaviour
     public static bool BulletDecount = false;
     public static int Arrows = 6;
     public static bool NewGame = false;
+    public static bool SavedGame = false;
     public static Transform Target1;
     public static Transform Target2;
     public static Transform Target3;
@@ -53,6 +54,13 @@ public class SaveScript : MonoBehaviour
     public static int EnemiesOnScreen = 0;
     public static int MaxEnemiesInGame = 100;
     public static int EnemiesCurrent = 0;
+    public static int ApplesLeft = 10;
+    public static int AmmoLeft = 4;
+    public static int ArrowsLeft = 3;
+    public static int BatteriesLeft = 6;
+    public static int Enemy1 = 1;
+    public static int Enemy2 = 1;
+    public static int Enemy3 = 1;
 
 
     [SerializeField] Transform _Target1;
@@ -96,7 +104,7 @@ public class SaveScript : MonoBehaviour
         if (NewGame == true) 
         {
     PlayerHealth = 100;
-    HealthChanged = false;
+    HealthChanged = true;
     BatteryPower = 1.0f;
     BatteryRefill = false;
     FlashLightOn = false;
@@ -121,6 +129,74 @@ public class SaveScript : MonoBehaviour
     Bullets = 12;
     BulletDecount = false;
     Arrows = 6;
+    NewGame = false;
+    ApplesLeft = 10;
+    AmmoLeft = 4;
+    ArrowsLeft = 3;
+    BatteriesLeft = 6;
+    Enemy1 = 1;
+    Enemy2 = 1;
+    Enemy3 = 1;
+}
+
+
+        if(SavedGame == true)
+        {
+            PlayerHealth = PlayerPrefs.GetInt("PlayersHealth");
+            HealthChanged = true;
+            BatteryPower = PlayerPrefs.GetInt("BatteriesPower");
+            Apples = PlayerPrefs.GetInt("ApplesAmt");
+            Batteries = PlayerPrefs.GetInt("BatteriesAmt");
+            BulletClips = PlayerPrefs.GetInt("BulletsClips");
+            Bullets = PlayerPrefs.GetInt("BulletsAmt");
+            Arrows = PlayerPrefs.GetInt("ArrowsAmt");
+            MaxEnemiesOnScreen = PlayerPrefs.GetInt("MaxEScreen");
+            MaxEnemiesInGame = PlayerPrefs.GetInt("MaxEGame");
+            ApplesLeft = PlayerPrefs.GetInt("ApplesL");
+            AmmoLeft = PlayerPrefs.GetInt("AmmoL");
+            ArrowsLeft = PlayerPrefs.GetInt("ArrowsL");
+            BatteriesLeft = PlayerPrefs.GetInt("BatteriesL");
+            Enemy1 = PlayerPrefs.GetInt("Enemy1Alive");
+            Enemy2 = PlayerPrefs.GetInt("Enemy2Alive");
+            Enemy3 = PlayerPrefs.GetInt("Enemy3Alive");
+
+            if (PlayerPrefs.GetInt("KnifeInv") == 1)
+            {
+                Knife = true;
+            }
+            if (PlayerPrefs.GetInt("AxeInv") == 1)
+            {
+                Axe = true;
+            }
+            if (PlayerPrefs.GetInt("BatInv") == 1)
+            {
+                Bat = true;
+            }
+            if (PlayerPrefs.GetInt("GunInv") == 1)
+            {
+                Gun = true;
+            }
+            if (PlayerPrefs.GetInt("CrossbowInv") == 1)
+            {
+                Crossbow = true;
+            }
+            if (PlayerPrefs.GetInt("CabinK") == 1)
+            {
+                CabinKey = true;
+            }
+            if (PlayerPrefs.GetInt("HouseK") == 1)
+            {
+                HouseKey = true;
+            }
+            if (PlayerPrefs.GetInt("RoomK") == 1)
+            {
+                RoomKey = true;
+            }
+            if (PlayerPrefs.GetInt("ArrowR") == 1)
+            {
+                ArrowRefill = true;
+            }
+            SavedGame = false;
         }
     }
 }

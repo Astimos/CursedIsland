@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6531055879769656396}
   - component: {fileID: 6531055879769656403}
   - component: {fileID: 6531055879769656397}
+  - component: {fileID: 8517991226268850906}
   m_Layer: 0
   m_Name: Baterry
   m_TagString: Battery
@@ -131,3 +132,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8517991226268850906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6531393543155546222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf16f0f4b4ac488489258252ca16d42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BatteryNumber: 0

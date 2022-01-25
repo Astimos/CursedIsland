@@ -41,6 +41,7 @@ public class Pickups : MonoBehaviour
                     if (SaveScript.Apples < 6)
                     {
                         Destroy(hit.transform.gameObject);
+                        SaveScript.ApplesLeft--;
                         SaveScript.Apples += 1;
                         MyPlayer.Play();
                     }
@@ -54,7 +55,8 @@ public class Pickups : MonoBehaviour
                     if (SaveScript.Batteries < 4)
                     {
                         Destroy(hit.transform.gameObject);
-                        SaveScript.Batteries += 1;
+                        SaveScript.BatteriesLeft--;
+                        SaveScript.Batteries++;
                         MyPlayer.Play();
                     }
                 }
@@ -179,9 +181,9 @@ public class Pickups : MonoBehaviour
                     if (SaveScript.BulletClips < 4)
                     {
                         Destroy(hit.transform.gameObject);
-                        SaveScript.BulletClips = SaveScript.BulletClips + 1;
+                        SaveScript.AmmoLeft--;
+                        SaveScript.BulletClips++;
                         MyPlayer.Play();
-                        Debug.Log(SaveScript.BulletClips);
                     }
                 }
 
@@ -194,6 +196,7 @@ public class Pickups : MonoBehaviour
                     if (SaveScript.ArrowRefill == false)
                     {
                         Destroy(hit.transform.gameObject);
+                        SaveScript.ArrowsLeft--;
                         SaveScript.ArrowRefill = true;
                         MyPlayer.Play();
                     }

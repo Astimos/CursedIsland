@@ -1040,7 +1040,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490233152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1547888323}
+        m_MethodName: LoadGameData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 160365259}
+        m_MethodName: loadingScreen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1490233152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,6 +1310,7 @@ GameObject:
   - component: {fileID: 1547888319}
   - component: {fileID: 1547888318}
   - component: {fileID: 1547888322}
+  - component: {fileID: 1547888323}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1389,6 +1412,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1741f88584e6ccd439b725fe8958a32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Target1: {fileID: 0}
+  _Target2: {fileID: 0}
+  _Target3: {fileID: 0}
+  _Target4: {fileID: 0}
+  _Target5: {fileID: 0}
+  _Target6: {fileID: 0}
+  _Target7: {fileID: 0}
+  _Target8: {fileID: 0}
+  _Target9: {fileID: 0}
+  _Target10: {fileID: 0}
+  PlayerPrefab: {fileID: 0}
+  ChaseMusic: {fileID: 0}
+  HurtUI: {fileID: 0}
+  StabPlayer: {fileID: 0}
+  BloodSpatKnife: {fileID: 0}
+  BloodSpatBat: {fileID: 0}
+  BloodSpatAxe: {fileID: 0}
+--- !u!114 &1547888323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547888317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d6dc034f6e63b4c8f977d221dec72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DataExists: 10
+  LoadButton: {fileID: 1490233149}
 --- !u!1 &1651075574
 GameObject:
   m_ObjectHideFlags: 0
