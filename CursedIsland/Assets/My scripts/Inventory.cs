@@ -158,12 +158,14 @@ public class Inventory : MonoBehaviour
             if (OptionsActive == false) 
             {
                 OptionsMenu.gameObject.SetActive(true);
+                SaveScript.OptionsOpen = true;
                 OptionsActive = true;
             }
             else if (OptionsActive == true)
             {
                 OptionsMenu.gameObject.SetActive(false);
                 Cursor.visible = false;
+                SaveScript.OptionsOpen = false;
                 Time.timeScale = 1;
                 OptionsActive = false;
             }
@@ -174,22 +176,15 @@ public class Inventory : MonoBehaviour
             {
                 InventoryMenu.gameObject.SetActive(true);
                 InventoryActive = true;
+                SaveScript.InventoryOpen = true;
                 Time.timeScale = 0f;
                 Cursor.visible = true;
-                SaveScript.HaveAxe = false;
-                SaveScript.HaveBat = false;
-                SaveScript.HaveKnife = false;
-                SaveScript.HaveGun = false;
-                SaveScript.HaveCrossbow = false;
-                GunUI.gameObject.SetActive(false);
-                BulletAmt.gameObject.SetActive(false);
-                CrossbowUI.gameObject.SetActive(false);
-                ArrowAmount.gameObject.SetActive(false);
             }
             else if (InventoryActive == true)
             {
                 InventoryMenu.gameObject.SetActive(false);
                 InventoryActive = false;
+                SaveScript.InventoryOpen = false;
                 Time.timeScale = 1f;
                 Cursor.visible = false;
             }
@@ -494,7 +489,7 @@ public class Inventory : MonoBehaviour
     {
         if (SaveScript.PlayerHealth < 100)
         {
-            SaveScript.PlayerHealth += 10;
+            SaveScript.PlayerHealth += 30;
             SaveScript.HealthChanged = true;
             SaveScript.Apples -= 1;
             MyPlayer.clip = AppleBite;
@@ -525,6 +520,12 @@ public class Inventory : MonoBehaviour
         SaveScript.HaveKnife = true;
         SaveScript.HaveBat = false;
         SaveScript.HaveAxe = false;
+        SaveScript.HaveGun = false;
+        SaveScript.HaveCrossbow = false;
+        GunUI.gameObject.SetActive(false);
+        BulletAmt.gameObject.SetActive(false);
+        CrossbowUI.gameObject.SetActive(false);
+        ArrowAmount.gameObject.SetActive(false);
     }
 
     public void AssignBat()
@@ -537,6 +538,12 @@ public class Inventory : MonoBehaviour
         SaveScript.HaveBat = true;
         SaveScript.HaveKnife = false;
         SaveScript.HaveAxe = false;
+        SaveScript.HaveGun = false;
+        SaveScript.HaveCrossbow = false;
+        GunUI.gameObject.SetActive(false);
+        BulletAmt.gameObject.SetActive(false);
+        CrossbowUI.gameObject.SetActive(false);
+        ArrowAmount.gameObject.SetActive(false);
     }
 
     public void AssignAxe()
@@ -549,6 +556,12 @@ public class Inventory : MonoBehaviour
         SaveScript.HaveAxe = true;
         SaveScript.HaveBat = false;
         SaveScript.HaveKnife = false;
+        SaveScript.HaveGun = false;
+        SaveScript.HaveCrossbow = false;
+        GunUI.gameObject.SetActive(false);
+        BulletAmt.gameObject.SetActive(false);
+        CrossbowUI.gameObject.SetActive(false);
+        ArrowAmount.gameObject.SetActive(false);
     }
 
     public void AssignGun()
@@ -565,6 +578,8 @@ public class Inventory : MonoBehaviour
         SaveScript.HaveCrossbow = false;
         GunUI.gameObject.SetActive(true);
         BulletAmt.gameObject.SetActive(true);
+        CrossbowUI.gameObject.SetActive(false);
+        ArrowAmount.gameObject.SetActive(false);
     }
 
     public void AssignCrossbow()
@@ -581,6 +596,8 @@ public class Inventory : MonoBehaviour
         SaveScript.HaveCrossbow = true;
         CrossbowUI.gameObject.SetActive(true);
         ArrowAmount.gameObject.SetActive(true);
+        GunUI.gameObject.SetActive(false);
+        BulletAmt.gameObject.SetActive(false);
     }
 
     public void WeaponsOff()

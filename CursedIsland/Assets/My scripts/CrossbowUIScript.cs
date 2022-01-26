@@ -27,12 +27,15 @@ public class CrossbowUIScript : MonoBehaviour
         timer2 -= Time.deltaTime;
         if (Input.GetKey(KeyCode.Mouse1) && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(SaveScript.Arrows > 0)
+            if (SaveScript.InventoryOpen == false && SaveScript.OptionsOpen == false)
             {
-                if(timer2 < 0.01f) 
-                { 
-                    SaveScript.Arrows -= 1;
-                    timer2 = time2;
+                if (SaveScript.Arrows > 0)
+                {
+                    if (timer2 < 0.01f)
+                    {
+                        SaveScript.Arrows -= 1;
+                        timer2 = time2;
+                    }
                 }
             }
         }

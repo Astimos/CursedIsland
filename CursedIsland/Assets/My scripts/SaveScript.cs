@@ -61,6 +61,8 @@ public class SaveScript : MonoBehaviour
     public static int Enemy1 = 1;
     public static int Enemy2 = 1;
     public static int Enemy3 = 1;
+    public static bool InventoryOpen = false;
+    public static bool OptionsOpen = false;
 
 
     [SerializeField] Transform _Target1;
@@ -137,6 +139,8 @@ public class SaveScript : MonoBehaviour
     Enemy1 = 1;
     Enemy2 = 1;
     Enemy3 = 1;
+    InventoryOpen = false;
+    OptionsOpen = false;
 }
 
 
@@ -197,6 +201,8 @@ public class SaveScript : MonoBehaviour
                 ArrowRefill = true;
             }
             SavedGame = false;
+            InventoryOpen = false;
+            OptionsOpen = false;
         }
     }
 }

@@ -36,13 +36,16 @@ public class SimpleShoot : MonoBehaviour
         //If you want a different input, change it here
         if (Input.GetButtonDown("Fire1"))
         {
-            if (SaveScript.Bullets > 0) 
+            if (SaveScript.InventoryOpen == false && SaveScript.OptionsOpen == false)
             {
-                //Calls animation on the gun that has the relevant animation events that will fire
-
-                if (Input.GetKey(KeyCode.Mouse1) && Input.GetKeyDown(KeyCode.Mouse0))
+                if (SaveScript.Bullets > 0)
                 {
-                    gunAnimator.SetTrigger("Fire");
+                    //Calls animation on the gun that has the relevant animation events that will fire
+
+                    if (Input.GetKey(KeyCode.Mouse1) && Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        gunAnimator.SetTrigger("Fire");
+                    }
                 }
             }
         }

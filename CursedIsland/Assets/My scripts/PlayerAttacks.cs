@@ -36,89 +36,93 @@ public class PlayerAttacks : MonoBehaviour
         }
         if (AttackStamina > 3.0)
         {
-            if (SaveScript.HaveKnife == true)
+            if (SaveScript.InventoryOpen == false && SaveScript.OptionsOpen == false)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    Anim.SetTrigger("KnifeLMB");
-                    AttackStamina -= AttackDrain;
-                }
-                if (Input.GetKeyDown(KeyCode.Mouse1))
-                {
-                    Anim.SetTrigger("KnifeRMB");
-                    AttackStamina -= AttackDrain;
-                }
-            }
-            if (SaveScript.HaveBat == true)
-            {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    Anim.SetTrigger("BatLMB");
-                    AttackStamina -= AttackDrain;
-                }
-                if (Input.GetKeyDown(KeyCode.Mouse1))
-                {
-                    Anim.SetTrigger("BatRMB");
-                    AttackStamina -= AttackDrain;
-                }
-            }
-            if (SaveScript.HaveAxe == true)
-            {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    Anim.SetTrigger("AxeLMB");
-                    AttackStamina -= AttackDrain;
-                }
-                if (Input.GetKeyDown(KeyCode.Mouse1))
-                {
-                    Anim.SetTrigger("AxeRMB");
-                    AttackStamina -= AttackDrain;
-                }
-            }
 
-            if (SaveScript.HaveGun == true)
-            {
-                if (Input.GetKey(KeyCode.Mouse1))
+                if (SaveScript.HaveKnife == true)
                 {
-                    Anim.SetBool("AimGun", true);
-                    Pointer.gameObject.SetActive(false);
-                }
-                if (Input.GetKeyUp(KeyCode.Mouse1))
-                {
-                    Anim.SetBool("AimGun", false);
-                    Pointer.gameObject.SetActive(true);
-                }
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (SaveScript.Bullets > 0)
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
-                        MyPlayer.clip = GunShotSound;
-                        // MyPlayer.Play();
+                        Anim.SetTrigger("KnifeLMB");
+                        AttackStamina -= AttackDrain;
+                    }
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    {
+                        Anim.SetTrigger("KnifeRMB");
+                        AttackStamina -= AttackDrain;
                     }
                 }
-            }
-
-            if (SaveScript.HaveCrossbow == true)
-               {
-                if (Input.GetKey(KeyCode.Mouse1))
+                if (SaveScript.HaveBat == true)
                 {
-                   Anim.SetBool("AimCrossbow", true);
-                   Pointer.gameObject.SetActive(false);
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        Anim.SetTrigger("BatLMB");
+                        AttackStamina -= AttackDrain;
+                    }
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    {
+                        Anim.SetTrigger("BatRMB");
+                        AttackStamina -= AttackDrain;
+                    }
                 }
-                if (Input.GetKeyUp(KeyCode.Mouse1))
+                if (SaveScript.HaveAxe == true)
                 {
-                   Anim.SetBool("AimCrossbow", false);
-                   Pointer.gameObject.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        Anim.SetTrigger("AxeLMB");
+                        AttackStamina -= AttackDrain;
+                    }
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    {
+                        Anim.SetTrigger("AxeRMB");
+                        AttackStamina -= AttackDrain;
+                    }
                 }
 
-                if (Input.GetMouseButtonDown(0))
+                if (SaveScript.HaveGun == true)
                 {
-                   if (SaveScript.Arrows > 0)
-                   {
-                       MyPlayer.clip = BowShotSound;
-                       // MyPlayer.Play();
-                   }
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        Anim.SetBool("AimGun", true);
+                        Pointer.gameObject.SetActive(false);
+                    }
+                    if (Input.GetKeyUp(KeyCode.Mouse1))
+                    {
+                        Anim.SetBool("AimGun", false);
+                        Pointer.gameObject.SetActive(true);
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (SaveScript.Bullets > 0)
+                        {
+                            MyPlayer.clip = GunShotSound;
+                            // MyPlayer.Play();
+                        }
+                    }
+                }
+
+                if (SaveScript.HaveCrossbow == true)
+                {
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        Anim.SetBool("AimCrossbow", true);
+                        Pointer.gameObject.SetActive(false);
+                    }
+                    if (Input.GetKeyUp(KeyCode.Mouse1))
+                    {
+                        Anim.SetBool("AimCrossbow", false);
+                        Pointer.gameObject.SetActive(true);
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (SaveScript.Arrows > 0)
+                        {
+                            MyPlayer.clip = BowShotSound;
+                            // MyPlayer.Play();
+                        }
+                    }
                 }
             }
         }

@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
     private NavMeshAgent Nav;
     private NavMeshHit hit;
     private bool blocked = false;
-    private bool RunToPlayer = false;
+    public bool RunToPlayer = false;
     private float DistanceToPlayer;
     private bool IsChecking = true;
     private int FailedChecks = 0;

@@ -47,14 +47,14 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PKnife")) 
         {
-            EnemyHealth -= 10;
+            EnemyHealth -= 15;
             MyPlayer.Play();
             StabPlayer.Play();
             BloodSpatKnife.gameObject.SetActive(true);
         }
         if (other.gameObject.CompareTag("PAxe"))
         {
-            EnemyHealth -= 20;
+            EnemyHealth -= 40;
             MyPlayer.Play();
             StabPlayer.Play();
             BloodSpatAxe.gameObject.SetActive(true);

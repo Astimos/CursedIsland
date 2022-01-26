@@ -27,12 +27,15 @@ public class GunUIScript : MonoBehaviour
         timer1 -= Time.deltaTime;
         if (Input.GetKey(KeyCode.Mouse1) && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(SaveScript.Bullets > 0)
+            if (SaveScript.InventoryOpen == false && SaveScript.OptionsOpen == false)
             {
-                if(timer1 < 0.01f) 
-                { 
-                    SaveScript.Bullets -= 1;
-                    timer1 = time1;
+                if (SaveScript.Bullets > 0)
+                {
+                    if (timer1 < 0.01f)
+                    {
+                        SaveScript.Bullets -= 1;
+                        timer1 = time1;
+                    }
                 }
             }
         }
