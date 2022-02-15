@@ -113,6 +113,6 @@ public class EnemyDamage : MonoBehaviour
     IEnumerator LoadFinalScene()
     {
         yield return new WaitForSeconds(6f);
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(2);
     }
 }

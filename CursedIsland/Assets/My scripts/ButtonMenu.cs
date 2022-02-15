@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuLoad : MonoBehaviour
+public class ButtonMenu : MonoBehaviour
 {
-    [SerializeField] int LevelNumber = 0;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
+    public void MainMenu()
     {
         SceneManager.LoadScene(0);
     }
+
 }
