@@ -15,7 +15,7 @@ public class SaveScript : MonoBehaviour
     public static int Batteries = 0;
     public static bool Knife = false;
     public static bool Bat = false;
-    public static bool Axe = false;
+    public static bool Axe = true;
     public static bool Gun = false;
     public static bool Crossbow = false;
     public static bool CabinKey = false;

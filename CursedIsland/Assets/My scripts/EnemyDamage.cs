@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyDamage : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] GameObject BloodSpatBat;
     [SerializeField] GameObject BloodSpatAxe;
     private bool DamageOn = false;
+    [SerializeField] bool IsBoss;
+    [SerializeField] GameObject EnemyAttackScript;
 
 
     // Start is called before the first frame update
@@ -27,20 +30,38 @@ public class EnemyDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DamageOn == true) 
-      { 
-        if (EnemyHealth <= 0) 
+        if (DamageOn == true)
         {
-            if (HasDied == false) 
+            if (IsBoss == false)
             {
-                Anim.SetTrigger("Death");
-                Anim.SetBool("IsDead", true);
-                HasDied = true;
-                SaveScript.EnemiesOnScreen--;
-                Destroy(this.transform.parent.gameObject, 25f);
+                if (EnemyHealth <= 0)
+                {
+                    if (HasDied == false)
+                    {
+                        Anim.SetTrigger("Death");
+                        Anim.SetBool("IsDead", true);
+                        HasDied = true;
+                        SaveScript.EnemiesOnScreen--;
+                        Destroy(this.transform.parent.gameObject, 25f);
+                    }
+                }
+            }
+
+            if (IsBoss == true)
+            {
+                if (EnemyHealth <= 0)
+                {
+                    if (HasDied == false)
+                    {
+                        EnemyAttackScript.gameObject.SetActive(false);
+                        Anim.SetTrigger("BossDeath");
+                        HasDied = true;
+                        StartCoroutine(LoadFinalScene());
+                    }
+                }
             }
         }
-      }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,5 +108,11 @@ public class EnemyDamage : MonoBehaviour
         BloodSpatBat.gameObject.SetActive(false);
         BloodSpatAxe.gameObject.SetActive(false);
         DamageOn = true;
+    }
+
+    IEnumerator LoadFinalScene()
+    {
+        yield return new WaitForSeconds(6f);
+        SceneManager.LoadScene(4);
     }
 }
