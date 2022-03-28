@@ -17,6 +17,8 @@ public class BatteryPower : MonoBehaviour
         {
             SaveScript.BatteryRefill = false;
             BatteryUI.fillAmount = 1.0f;
+            Power = BatteryUI.fillAmount;
+            SaveScript.BatteryPower = Power;
         }
         if (SaveScript.FlashLightOn == true || SaveScript.NVLightOn == true)
         {

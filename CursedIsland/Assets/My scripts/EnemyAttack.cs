@@ -12,6 +12,7 @@ public class EnemyAttack : MonoBehaviour
     private float DistanceToPlayer;
     private bool IsChecking = true;
     private int FailedChecks = 0;
+    private bool StartCoolDown = true;
 
     [SerializeField] int MaxChecks = 3;
     [SerializeField] Transform Player;
@@ -32,6 +33,7 @@ public class EnemyAttack : MonoBehaviour
     {
         Nav = GetComponentInParent<NavMeshAgent>();
         StartCoroutine(StartElement());
+        StartCoroutine(StartWalking());
     }
 
     // Update is called once per frame
@@ -72,11 +74,19 @@ public class EnemyAttack : MonoBehaviour
         if (RunToPlayer == true)
         {
 
-            Enemy.GetComponent<EnemyMove>().enabled = false;
-            if (EnemyDamageZone.GetComponent<EnemyDamage>().HasDied == false)
-            {
-                ChaseMusic.gameObject.SetActive(true);
-            }
+
+                Enemy.GetComponent<EnemyMove>().enabled = false;
+                if (EnemyDamageZone.GetComponent<EnemyDamage>().HasDied == false)
+                {
+                    if (StartCoolDown == false)
+                    {
+                     ChaseMusic.gameObject.SetActive(true);
+                    }
+                 
+                }
+
+
+
             if (DistanceToPlayer > AttackDistance)
             {
                 Nav.isStopped = false;
@@ -86,6 +96,10 @@ public class EnemyAttack : MonoBehaviour
                 Nav.speed = ChaseSpeed;
                 HurtUI.gameObject.SetActive(false);
             }
+
+
+
+
             if (DistanceToPlayer < AttackDistance -0.5f)
             {
                 Nav.isStopped = true;
@@ -132,6 +146,14 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    IEnumerator StartWalking()
+    {
+        yield return new WaitForSeconds(1f);
+        RunToPlayer = true;
+        yield return new WaitForSeconds(0.1f);
+        RunToPlayer = false;
+        StartCoolDown = false;
+    }
     IEnumerator TimedCheck() 
     {
         yield return new WaitForSeconds(CheckTime);

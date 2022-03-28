@@ -33,7 +33,6 @@ public class BossAttack : MonoBehaviour
         {
             if (EnemyDamageZone.GetComponent<EnemyDamage>().HasDied == false)
             {
-                ChaseMusic.gameObject.SetActive(true);
                 Nav.isStopped = false;
                 Nav.acceleration = 24;
                 Nav.SetDestination(Player.position);
@@ -48,7 +47,6 @@ public class BossAttack : MonoBehaviour
                 Nav.isStopped = true;
                 Nav.acceleration = 180;
                 HurtUI.gameObject.SetActive(true);
-
                 Vector3 Pos = (Player.position - Enemy.transform.position).normalized;
                 Quaternion PosRotation = Quaternion.LookRotation(new Vector3(Pos.x, 0, Pos.z));
                 Enemy.transform.rotation = Quaternion.Slerp(Enemy.transform.rotation, PosRotation, Time.deltaTime * AttackRotateSpeed);

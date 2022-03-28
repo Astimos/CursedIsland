@@ -30,6 +30,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(LookAround());
         Nav = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
         StartCoroutine(StartElement());
